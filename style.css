@@ -1,0 +1,547 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #000428, #004e92);
+    overflow: hidden;
+    transition: background 0.5s, color 0.5s;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1.5s ease-in-out;
+    width: 90%;
+    max-width: 500px;
+    z-index: 2;
+    position: relative;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: bounceIn 2s;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: slideInFromLeft 1s ease-in-out;
+    transition: color 0.5s;
+}
+
+p {
+    font-size: 18px;
+    color: #ddd;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    animation: slideInFromRight 1s ease-in-out;
+    transition: color 0.5s;
+}
+
+.social-buttons {
+    margin-top: 15px;
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+.social-buttons a {
+    display: inline-block;
+    margin: 5px;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background: #000;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-buttons a:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 15px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideInFromRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.background-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+    z-index: 1;
+    transition: background 0.5s;
+}
+
+.background-stars span {
+    position: absolute;
+    display: block;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkling 3s infinite, float 5s infinite;
+}
+
+@keyframes twinkling {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(10px); }
+    100% { transform: translateY(0) translateX(0); }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    p {
+        font-size: 16px;
+    }
+    .social-buttons a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    .profile-pic {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, #000428, #004e92);
+    color: #ddd;
+}
+
+.text.dark-mode {
+    color: #ddd;
+}
+
+body.light-mode {
+    background: linear-gradient(135deg, #F0F8FF, #F0F8FF);
+    color: #000;
+}
+
+.text.light-mode {
+    color: #000;
+}
+
+.background-stars.light-mode {
+    background: white;
+}
+
+.background-stars.dark-mode span {
+    background: #fff;
+}
+
+.background-stars.light-mode span {
+    background: #000;
+}
+
+.container.light-mode {
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: none;
+}
+
+.container.dark-mode {
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: none;
+}
+
+h1.light-mode, p.light-mode {
+    color: #000;
+}
+
+.toggle-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+}
+
+.switch-label {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox {
+    display: none;
+}
+
+.slider {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    background: #ccc;
+    border-radius: 20px;
+    transition: background 0.3s;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    top: 1px;
+    left: 1px;
+    transition: transform 0.3s;
+}
+
+.checkbox:checked + .slider {
+    background: #000;
+}
+
+.checkbox:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.theme-text {
+    margin-top: 5px;
+    color: #fff;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.dark-mode .theme-text {
+    color: #ddd;
+}
+
+.light-mode .theme-text {
+    color: #000;
+}
+
+.language-selector {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+}
+
+.language-option {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.language-option img {
+    margin-right: 5px;
+}
+
+.language-option .arrow {
+    margin-left: 5px;
+    transition: transform 0.3s;
+}
+
+.dropdown {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #242124;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    margin-top: 10px;
+}
+
+.language-option:hover .dropdown {
+    display: flex;
+}
+
+.menu-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 4;
+}
+
+.menu-icon .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    transition: background-color 0.3s;
+}
+
+.dark-mode .menu-icon .bar {
+    background-color: #fff;
+}
+
+.light-mode .menu-icon .bar {
+    background-color: #000;
+}
+
+.side-panel {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #242124;
+    transition: left 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+.side-panel.open {
+    left: 0;
+}
+/* CSS zůstává stejný, přidáme jen pár drobných změn */
+.language-selector .dropdown {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #242124;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    margin-top: 10px;
+}
+
+.language-selector .dropdown.open {
+    display: flex;
+}
+
+/* Přidáme CSS pro animaci panelu */
+.side-panel {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #242124;
+    transition: left 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+.side-panel.open {
+    left: 0;
+}
+
+.menu-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 4;
+}
+
+.menu-icon .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    transition: background-color 0.3s;
+}
+
+.dark-mode .menu-icon .bar {
+    background-color: #fff;
+}
+
+.light-mode .menu-icon .bar {
+    background-color: #000;
+}
+/* Přidáme CSS pro animaci panelu */
+.side-panel {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #000; /* Default dark mode */
+    transition: left 0.3s, background-color 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Zarovnáme nahoře */
+    padding-top: 20px;
+    z-index: 3;
+}
+
+.side-panel.open {
+    left: 0;
+}
+
+.side-panel.light-mode {
+    background-color: #fff; /* Light mode */
+    color: #000; /* Text color for light mode */
+}
+
+/* Stylování textu "language options" */
+.language-options-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.language-options-text.light-mode {
+    color: #000;
+}
+
+.language-options-text.dark-mode {
+    color: #fff;
+}
+
+/* Aktualizace stylů pro tabulku jazyků */
+.language-selector .dropdown {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #000; /* Default dark mode background */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    margin-top: 10px;
+}
+
+.language-selector .dropdown.open {
+    display: flex;
+}
+
+.language-selector .dropdown.light-mode {
+    background-color: #fff; /* Light mode background */
+    color: #000; /* Light mode text color */
+}
+
+.language-selector .dropdown.light-mode .language-option {
+    color: #000; /* Text color for light mode */
+}
+
+/* Stylování menu-icon */
+.menu-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+}
+
+.menu-icon .bar {
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.menu-icon.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-icon.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-icon.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.menu-icon.light-mode .bar {
+    background-color: #000;
+}
+
+/* Stylování textu v konteineru */
+.text {
+    transition: color 0.3s;
+}
+
+.light-mode .text {
+    color: #000;
+}
+
+.dark-mode .text {
+    color: #fff;
+}
+
+#menu-icon.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-icon.open .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+#menu-icon.open .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+#menu-icon.open ~ .side-panel {
+    left: 0;
+}
+
